@@ -44,18 +44,20 @@ public class BookUseCases {
 				
 				bookservice.bookRoom(book);
 				System.out.println("Room Booking Successfully ! ");
+				break;
 			case 2:
 				Book book2 = new Book();
 				
 				System.out.println("Enter Guest Id ! ");
 				book2.setGuestId(sc.nextInt());
 				bookservice.getBookingByGuestId(book2.getGuestId());
+				break;
 				
 			case 3:
 				Book book3 = new Book();
-				System.out.println("Enter Booking Id");
-				book3.setBookingId(sc.nextInt());
-				bookservice.cancelBooking(book3.getBookingId());
+				System.out.println("Enter Room Id");
+				book3.setRoomId(sc.nextInt());
+				bookservice.cancelBooking(book3.getRoomId());
 				break;
 			case 4:
 				System.exit(4);

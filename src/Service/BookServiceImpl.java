@@ -24,8 +24,8 @@ public class BookServiceImpl implements BookService{
 	}
 
 	@Override
-	public void cancelBooking(int bookingId) throws BookException {
-		bookDao.cancelBooking(bookingId);
+	public void cancelBooking(int roomId ) throws BookException {
+		bookDao.cancelBooking(roomId);
 		
 	}
 
