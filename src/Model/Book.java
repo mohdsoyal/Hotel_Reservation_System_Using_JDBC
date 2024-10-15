@@ -8,7 +8,7 @@ public class Book {
 	private String BookingDate;
 	private String CheckIN;
 	private String CheckOut;
-	
+	private int hotelId;
 	
 	public int getBookingId() {
 		return BookingId;
@@ -46,7 +46,14 @@ public class Book {
 	public void setCheckOut(String checkOut) {
 		CheckOut = checkOut;
 	}
-	public Book(int bookingId, int guestId, int roomId, String bookingDate, String checkIN, String checkOut) {
+	public int getHotelId() {
+		return hotelId;
+	}
+	public void setHotelId(int hotelId) {
+		this.hotelId = hotelId;
+	}
+	public Book(int bookingId, int guestId, int roomId, String bookingDate, String checkIN, String checkOut,
+			int hotelId) {
 		super();
 		BookingId = bookingId;
 		GuestId = guestId;
@@ -54,15 +61,18 @@ public class Book {
 		BookingDate = bookingDate;
 		CheckIN = checkIN;
 		CheckOut = checkOut;
+		this.hotelId = hotelId;
 	}
 	public Book() {
 		super();
-		
+		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {
 		return "Book [BookingId=" + BookingId + ", GuestId=" + GuestId + ", RoomId=" + RoomId + ", BookingDate="
-				+ BookingDate + ", CheckIN=" + CheckIN + ", CheckOut=" + CheckOut + "]";
-	}
-
+				+ BookingDate + ", CheckIN=" + CheckIN + ", CheckOut=" + CheckOut + ", hotelId=" + hotelId + "]";
+	}  
+	
+	
+	
 }

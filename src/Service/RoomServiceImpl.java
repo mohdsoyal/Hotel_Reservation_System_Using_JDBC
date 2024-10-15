@@ -23,9 +23,8 @@ public class RoomServiceImpl implements RoomServices{
 	}
 
 	@Override
-	public Room getRoomById(int roomId) throws RoomException  {
-		
-		return roomDao.getRoomById(roomId);
+	public Room getRoomByHotelId(int hotelId) throws RoomException  {
+		return roomDao.getRoomByHotelId(hotelId);
 	}
 
 	@Override

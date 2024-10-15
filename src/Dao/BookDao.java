@@ -11,7 +11,7 @@ public interface BookDao {
 	
 	List<Book> getBookingByGuestId(int guestId) throws BookException;
 	
-	void cancelBooking(int  roomId ) throws BookException;
+	void cancelBooking(int  roomId , int hotelId ) throws BookException;
 	
 }
 

@@ -19,7 +19,7 @@ public class RoomUseCases {
 		
 		while(true) {
 			System.out.println("1. :Add The New Room : ! ");
-			System.out.println("2. :Get Room By Room Id : !");
+			System.out.println("2. :Get Room By Hotel Id : !");
 			System.out.println("3. :Get All Room");
 			
 			
@@ -39,6 +39,8 @@ public class RoomUseCases {
 				System.out.println("Enter Room Price ! ");
 				r1.setRoomPrice(sc.next());
 				
+				System.out.println("Enter Hotel Id !");
+				r1.setHotelId(sc.nextInt());
 				
 				roomService.addRoom(r1);
 				System.out.println("Room Add Successfully ! ");
@@ -47,10 +49,9 @@ public class RoomUseCases {
 			case 2:
 				
 				Room r2 = new Room();
-				System.out.println("Enter Room Id !");
-				r2.setRoomId(sc.nextInt());
-				
-				roomService.getRoomById(r2.getRoomId());
+				System.out.println("Enter Hotel Id !");
+				r2.setHotelId(sc.nextInt());
+				roomService.getRoomByHotelId(r2.getHotelId());
 				break;
 				
 			case 3:

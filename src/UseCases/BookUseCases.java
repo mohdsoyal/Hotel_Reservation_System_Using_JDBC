@@ -42,6 +42,9 @@ public class BookUseCases {
 				System.out.println("Enter Your Checked Out Date '{YY-MM-DD}'");
 				book.setCheckOut(sc.next());
 				
+				System.out.println("Enter Hotel ID ! ");
+				book.setHotelId(sc.nextInt());
+				
 				bookservice.bookRoom(book);
 				System.out.println("Room Booking Successfully ! ");
 				break;
@@ -57,8 +60,11 @@ public class BookUseCases {
 				Book book3 = new Book();
 				System.out.println("Enter Room Id");
 				book3.setRoomId(sc.nextInt());
-				bookservice.cancelBooking(book3.getRoomId());
-				break;
+				
+				System.out.println("Enter Hotel Id !");
+				book3.setHotelId(sc.nextInt());
+				bookservice.cancelBooking(book3.getRoomId(), book3.getHotelId());
+			    break;
 			case 4:
 				System.exit(4);
 				break;

@@ -17,12 +17,14 @@ public class RoomDaoImpl implements RoomDao {
 
 	@Override
 	public void addRoom(Room room) throws RoomException {
-		String query = "insert into room (roomType , roomPrice , roomStatus) values (?,?,'Available')";
+		String query = "insert into room (roomType , roomPrice , roomStatus ,hotelId) values (?,?,'Available',?)";
 
 		try (Connection conn = DataBaseConnectvity.getInstance().getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setString(1, room.getRoomType());
 			ps.setString(2, room.getRoomPrice());
+			ps.setInt(3, room.getHotelId());
+		
 			
 			int result = ps.executeUpdate();
 			if (result <= 0) {
@@ -38,13 +40,13 @@ public class RoomDaoImpl implements RoomDao {
 		
 	}
 	@Override
-	public Room getRoomById(int roomId) throws RoomException {
+	public Room getRoomByHotelId(int hotelId) throws RoomException {
 		Room room = null;
-		String query = "SELECT * FROM room WHERE roomId = ?";
+		String query = "SELECT * FROM room WHERE hotelId = ?";
 
 		try (Connection conn = DataBaseConnectvity.getInstance().getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(query);
-			ps.setInt(1, roomId);
+			ps.setInt(1, hotelId);
 
 			try (ResultSet rs = ps.executeQuery()) {
 				System.out.println("+----------+-----------------+-------------------+----------------+");
@@ -56,17 +58,18 @@ public class RoomDaoImpl implements RoomDao {
 					String roomType = rs.getString("roomType");
 					String roomPrice = rs.getString("roomPrice");
 					String roomStatus = rs.getString("roomStatus");
+					int hId = rs.getInt("hotelId");
 
-					room = new Room(romId, roomType, roomPrice, roomStatus);
+					room = new Room(romId, roomType, roomPrice, roomStatus,hId);
 
-					System.out.printf("| %-8d | %-15s | %-17s | %-14s |\n", romId, roomType, roomPrice, roomStatus);
+					System.out.printf("| %-8d | %-15s | %-17s | %-14s |\n", romId, roomType, roomPrice, roomStatus ,hId);
 					System.out.println("+----------+-----------------+-------------------+----------------+");
 				} else {
-					throw new RoomException("No room found with ID: " + roomId);
+					throw new RoomException("No room found with ID: " + hotelId);
 				}
 			}
 		} catch (SQLException e) {
-			throw new RoomException("Error fetching room with ID " + roomId + ": " + e.getMessage());
+			throw new RoomException("Error fetching room with ID " + hotelId + ": " + e.getMessage());
 		}
 
 		return room;
@@ -90,11 +93,12 @@ public class RoomDaoImpl implements RoomDao {
 					String roomType = rs.getString("roomType");
 					String roomPrice = rs.getString("roomPrice");
 					String roomStatus = rs.getString("roomStatus");
+					int hId = rs.getInt("hotelId");
 
-					Room g1 = new Room(romId, roomType, roomPrice, roomStatus);
+					Room g1 = new Room(romId, roomType, roomPrice, roomStatus , hId);
 					room.add(g1);
 
-					System.out.printf("| %-8d | %-15s | %-17s | %-14s |\n", romId, roomType, roomPrice, roomStatus);
+					System.out.printf("| %-8d | %-15s | %-17s | %-14s |\n", romId, roomType, roomPrice, roomStatus,hId);
 					System.out.println("+----------+-----------------+-------------------+----------------+");
 				}
 			}

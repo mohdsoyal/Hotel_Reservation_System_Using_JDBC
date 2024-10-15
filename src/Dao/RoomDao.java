@@ -12,7 +12,7 @@ public interface RoomDao {
 	
 	void updateRoomStatus(int roomid , String status) throws RoomException;
 	
-	Room getRoomById(int roomId) throws RoomException;
+	Room getRoomByHotelId(int  hotelId) throws RoomException;
 	
 	List<Room> getAllRoom() throws RoomException ;
 

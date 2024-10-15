@@ -6,6 +6,7 @@ public class Room {
 	private String roomType;
 	private String roomPrice;
 	private String roomStatus;
+	private int  hotelId;
 	public int getRoomId() {
 		return roomId;
 	}
@@ -30,12 +31,19 @@ public class Room {
 	public void setRoomStatus(String roomStatus) {
 		this.roomStatus = roomStatus;
 	}
-	public Room(int roomId, String roomType, String roomPrice, String roomStatus) {
+	public int getHotelId() {
+		return hotelId;
+	}
+	public void setHotelId(int hotelId) {
+		this.hotelId = hotelId;
+	}
+	public Room(int roomId, String roomType, String roomPrice, String roomStatus, int hotelId) {
 		super();
 		this.roomId = roomId;
 		this.roomType = roomType;
 		this.roomPrice = roomPrice;
 		this.roomStatus = roomStatus;
+		this.hotelId = hotelId;
 	}
 	public Room() {
 		super();
@@ -44,9 +52,8 @@ public class Room {
 	@Override
 	public String toString() {
 		return "Room [roomId=" + roomId + ", roomType=" + roomType + ", roomPrice=" + roomPrice + ", roomStatus="
-				+ roomStatus + "]";
+				+ roomStatus + ", hotelId=" + hotelId + "]";
 	}
 	
 	
-
 }
